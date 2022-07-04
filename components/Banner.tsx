@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import { baseUrl } from '../constants/movie'
 import { Movie } from '../typings'
 import Image from 'next/image'
+import { useRecoilState } from 'recoil'
+import { modalState, movieState } from '../atoms/modalAtom'
 
 interface Props {
   netflixOriginals: Movie[]
@@ -10,8 +12,8 @@ interface Props {
 
 function Banner({ netflixOriginals }: Props) {
   const [movie, setMovie] = useState<Movie | null>(null)
-  {/*const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
-const [showModal, setShowModal] = useRecoilState(modalState)*/} 
+  const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
+  const [showModal, setShowModal] = useRecoilState(modalState)
 
   useEffect(() => {
     setMovie(
@@ -35,9 +37,9 @@ const [showModal, setShowModal] = useRecoilState(modalState)*/}
       <p className="max-w-xs text-xs text-shadow-md md:max-w-lg md:text-lg lg:max-w-2xl lg:text-2xl">
         {movie?.overview}
       </p>
-      {/*<div className="flex space-x-3">
+      <div className="flex space-x-3">
         <button className="bannerButton bg-white text-black">
-          <FaPlay className="h-4 w-4 text-black md:h-7 md:w-7" />
+          {/*<FaPlay className="h-4 w-4 text-black md:h-7 md:w-7" />*/}
           Play
         </button>
 
@@ -50,7 +52,7 @@ const [showModal, setShowModal] = useRecoilState(modalState)*/}
         >
           <InformationCircleIcon className="h-5 w-5 md:h-8 md:w-8" /> More Info
         </button>
-      </div>*/}
+      </div>
     </div>
   )
 }
