@@ -31,9 +31,11 @@ const Home = ({ netflixOriginals,
 }: Props) => {
   const { user, loading } = useAuth()
   const showModal = useRecoilValue(modalState)
+  const subscription = false
 
-  if (loading) return 'loading'
+  if (loading || subscription === null) return null
 
+  
     return (
     <div className='relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]'>
       <Head>
